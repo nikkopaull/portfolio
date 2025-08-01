@@ -1,10 +1,101 @@
-body {
-    font-family: Arial, sans-serif;
+/* Reset and base styles */
+* {
     margin: 0;
-    padding: 20px;
-    background-color: #f5f5f5;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-h1 {
-    color: #333;
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #000000;
+    color: #ffffff;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+}
+
+/* Container for consistent spacing */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Sections */
+section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 40px 0;
+}
+
+/* Hero Section */
+#hero {
+    text-align: center;
+}
+
+#hero h1 {
+    font-size: 4rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+}
+
+#hero .title {
+    font-size: 1.5rem;
+    color: #cccccc;
+    margin-bottom: 2rem;
+}
+
+.divider {
+    width: 100px;
+    height: 1px;
+    background-color: #333333;
+    margin: 0 auto;
+}
+
+/* Section headings */
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    font-weight: 300;
+    color: #ffffff;
+}
+
+/* Experience styling */
+.job {
+    margin-bottom: 3rem;
+    padding: 2rem;
+    border: 1px solid #333333;
+    transition: all 0.3s ease;
+}
+
+.job:hover {
+    background-color: #111111;
+    border-color: #555555;
+}
+
+.job h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.company {
+    color: #cccccc;
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    #hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    #hero .title {
+        font-size: 1.2rem;
+    }
+    
+    h2 {
+        font-size: 2rem;
+    }
 }
