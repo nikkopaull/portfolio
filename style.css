@@ -99,3 +99,40 @@ h2 {
         font-size: 2rem;
     }
 }
+/* Alternating color glows - paste at bottom */
+
+/* Hero name - Blue glow */
+#hero h1 {
+    font-size: 4rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+    text-shadow: 0 0 20px rgba(0, 150, 255, 0.4);
+    transition: all 0.3s ease;
+}
+
+#hero h1:hover {
+    text-shadow: 0 0 30px rgba(0, 150, 255, 0.8);
+}
+
+/* About section - Purple glow */
+#about h2 {
+    text-shadow: 0 0 15px rgba(138, 43, 226, 0.4);
+}
+
+/* Experience section - Green glow */
+#experience h2 {
+    text-shadow: 0 0 15px rgba(0, 255, 127, 0.4);
+}
+
+/* Contact section - Orange glow */
+#contact h2 {
+    text-shadow: 0 0 15px rgba(255, 100, 0, 0.4);
+}
+
+/* Experience box with blue glow */
+.job:hover {
+    background-color: #111111;
+    border-color: #555555;
+    box-shadow: 0 0 25px rgba(0, 150, 255, 0.2);
+}
