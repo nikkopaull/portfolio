@@ -5,15 +5,67 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Arial', sans-serif;
     background-color: #000000;
     color: #ffffff;
     line-height: 1.6;
-    scroll-behavior: smooth;
+    background: radial-gradient(circle at 20% 30%, #0a0a0a 0%, #000000 100%);
+    animation: backgroundShift 30s ease-in-out infinite alternate;
 }
 
-/* Container for consistent spacing */
+/* Animated background */
+@keyframes backgroundShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+/* NAVBAR */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    padding: 15px 0;
+    text-align: center;
+    z-index: 999;
+    backdrop-filter: blur(8px);
+}
+
+nav a {
+    color: #aaa;
+    text-decoration: none;
+    margin: 0 20px;
+    font-size: 1rem;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+nav a:hover,
+nav a.active {
+    color: #00cfff;
+}
+
+nav a.active::after,
+nav a:hover::after {
+    content: "";
+    display: block;
+    margin: 4px auto 0;
+    width: 40%;
+    height: 2px;
+    background: #00cfff;
+    border-radius: 2px;
+}
+
+/* Container */
 .container {
     max-width: 800px;
     margin: 0 auto;
@@ -25,12 +77,25 @@ section {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    padding: 40px 0;
+    justify-content: center;
+    padding: 80px 0 60px;
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeInUp 1s ease forwards;
+    animation-delay: 0.2s;
 }
 
-/* Hero Section */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hero */
 #hero {
     text-align: center;
+    padding-top: 100px;
 }
 
 #hero h1 {
@@ -38,8 +103,8 @@ section {
     font-weight: 300;
     margin-bottom: 1rem;
     letter-spacing: 2px;
-    text-shadow: 0 0 20px rgba(0, 150, 255, 0.4);
     transition: all 0.3s ease;
+    animation: ambientGlowBlue 3s ease-in-out infinite;
 }
 
 #hero h1:hover {
@@ -52,14 +117,43 @@ section {
     margin-bottom: 2rem;
 }
 
-.divider {
-    width: 100px;
-    height: 1px;
-    background-color: #333333;
-    margin: 0 auto;
+.cta-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 30px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #00cfff;
+    border: none;
+    border-radius: 30px;
+    box-shadow: 0 0 20px rgba(0, 150, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-/* Section headings */
+.cta-btn:hover {
+    box-shadow: 0 0 30px rgba(0, 150, 255, 0.8);
+    transform: scale(1.05);
+}
+
+.divider {
+    width: 100px;
+    height: 2px;
+    background: linear-gradient(90deg, #00cfff, #007aff);
+    margin: 0 auto;
+    animation: pulseDivider 2s ease-in-out infinite;
+}
+
+@keyframes pulseDivider {
+    0%, 100% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Headings */
 h2 {
     font-size: 2.5rem;
     margin-bottom: 2rem;
@@ -67,30 +161,22 @@ h2 {
     color: #ffffff;
 }
 
-/* Section-specific glow effects */
-#about h2 {
-    text-shadow: 0 0 15px rgba(138, 43, 226, 0.4);
-}
-
-#experience h2 {
-    text-shadow: 0 0 15px rgba(0, 255, 127, 0.4);
-}
-
-#contact h2 {
-    text-shadow: 0 0 15px rgba(255, 100, 0, 0.4);
-}
-
-/* Experience styling */
+/* Experience section */
 .job {
     margin-bottom: 3rem;
     padding: 2rem;
     border: 1px solid #333333;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease, transform 0.3s ease;
+    background-color: #0d0d0d;
+    border-radius: 8px;
+    box-shadow: 0 0 0 transparent;
+    perspective: 1000px;
 }
 
 .job:hover {
     background-color: #111111;
-    border-color: #555555;
+    border-color: #00cfff;
+    transform: scale(1.02) rotateX(1deg);
     box-shadow: 0 0 25px rgba(0, 150, 255, 0.2);
 }
 
@@ -105,70 +191,84 @@ h2 {
     font-style: italic;
 }
 
-/* Mobile responsive */
+/* Contact section email */
+#contact p {
+    font-size: 1.1rem;
+    color: #ffae70;
+    text-align: center;
+    animation: pulseEmail 2s ease-in-out infinite;
+}
+
+@keyframes pulseEmail {
+    0%, 100% {
+        text-shadow: 0 0 5px rgba(255, 174, 112, 0.2);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(255, 174, 112, 0.6);
+    }
+}
+
+/* Mobile */
 @media (max-width: 768px) {
     #hero h1 {
         font-size: 2.5rem;
     }
-    
+
     #hero .title {
         font-size: 1.2rem;
     }
-    
+
     h2 {
         font-size: 2rem;
     }
 }
-/* Animate glow effect on section headings */
+
+/* Ambient Glow Keyframes */
 @keyframes ambientGlowBlue {
-  0%, 100% {
-    text-shadow: 0 0 10px rgba(0, 150, 255, 0.3), 0 0 20px rgba(0, 150, 255, 0.5);
-  }
-  50% {
-    text-shadow: 0 0 20px rgba(0, 150, 255, 0.7), 0 0 30px rgba(0, 150, 255, 0.9);
-  }
+    0%, 100% {
+        text-shadow: 0 0 10px rgba(0, 150, 255, 0.3), 0 0 20px rgba(0, 150, 255, 0.5);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(0, 150, 255, 0.7), 0 0 30px rgba(0, 150, 255, 0.9);
+    }
 }
 
 @keyframes ambientGlowPurple {
-  0%, 100% {
-    text-shadow: 0 0 10px rgba(138, 43, 226, 0.3), 0 0 20px rgba(138, 43, 226, 0.5);
-  }
-  50% {
-    text-shadow: 0 0 20px rgba(138, 43, 226, 0.7), 0 0 30px rgba(138, 43, 226, 0.9);
-  }
+    0%, 100% {
+        text-shadow: 0 0 10px rgba(138, 43, 226, 0.3), 0 0 20px rgba(138, 43, 226, 0.5);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(138, 43, 226, 0.7), 0 0 30px rgba(138, 43, 226, 0.9);
+    }
 }
 
 @keyframes ambientGlowGreen {
-  0%, 100% {
-    text-shadow: 0 0 10px rgba(0, 255, 127, 0.3), 0 0 20px rgba(0, 255, 127, 0.5);
-  }
-  50% {
-    text-shadow: 0 0 20px rgba(0, 255, 127, 0.7), 0 0 30px rgba(0, 255, 127, 0.9);
-  }
+    0%, 100% {
+        text-shadow: 0 0 10px rgba(0, 255, 127, 0.3), 0 0 20px rgba(0, 255, 127, 0.5);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(0, 255, 127, 0.7), 0 0 30px rgba(0, 255, 127, 0.9);
+    }
 }
 
 @keyframes ambientGlowOrange {
-  0%, 100% {
-    text-shadow: 0 0 10px rgba(255, 100, 0, 0.3), 0 0 20px rgba(255, 100, 0, 0.5);
-  }
-  50% {
-    text-shadow: 0 0 20px rgba(255, 100, 0, 0.7), 0 0 30px rgba(255, 100, 0, 0.9);
-  }
+    0%, 100% {
+        text-shadow: 0 0 10px rgba(255, 100, 0, 0.3), 0 0 20px rgba(255, 100, 0, 0.5);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(255, 100, 0, 0.7), 0 0 30px rgba(255, 100, 0, 0.9);
+    }
 }
 
-/* Apply ambient glow animations */
-#hero h1 {
-  animation: ambientGlowBlue 3s ease-in-out infinite;
-}
-
+/* Apply glow to each section heading */
 #about h2 {
-  animation: ambientGlowPurple 3s ease-in-out infinite;
+    animation: ambientGlowPurple 3s ease-in-out infinite;
 }
 
 #experience h2 {
-  animation: ambientGlowGreen 3s ease-in-out infinite;
+    animation: ambientGlowGreen 3s ease-in-out infinite;
 }
 
 #contact h2 {
-  animation: ambientGlowOrange 3s ease-in-out infinite;
+    animation: ambientGlowOrange 3s ease-in-out infinite;
 }
