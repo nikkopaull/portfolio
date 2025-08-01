@@ -119,3 +119,56 @@ h2 {
         font-size: 2rem;
     }
 }
+/* Animate glow effect on section headings */
+@keyframes ambientGlowBlue {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(0, 150, 255, 0.3), 0 0 20px rgba(0, 150, 255, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(0, 150, 255, 0.7), 0 0 30px rgba(0, 150, 255, 0.9);
+  }
+}
+
+@keyframes ambientGlowPurple {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(138, 43, 226, 0.3), 0 0 20px rgba(138, 43, 226, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(138, 43, 226, 0.7), 0 0 30px rgba(138, 43, 226, 0.9);
+  }
+}
+
+@keyframes ambientGlowGreen {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(0, 255, 127, 0.3), 0 0 20px rgba(0, 255, 127, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(0, 255, 127, 0.7), 0 0 30px rgba(0, 255, 127, 0.9);
+  }
+}
+
+@keyframes ambientGlowOrange {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(255, 100, 0, 0.3), 0 0 20px rgba(255, 100, 0, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(255, 100, 0, 0.7), 0 0 30px rgba(255, 100, 0, 0.9);
+  }
+}
+
+/* Apply ambient glow animations */
+#hero h1 {
+  animation: ambientGlowBlue 3s ease-in-out infinite;
+}
+
+#about h2 {
+  animation: ambientGlowPurple 3s ease-in-out infinite;
+}
+
+#experience h2 {
+  animation: ambientGlowGreen 3s ease-in-out infinite;
+}
+
+#contact h2 {
+  animation: ambientGlowOrange 3s ease-in-out infinite;
+}
